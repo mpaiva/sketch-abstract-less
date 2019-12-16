@@ -1,0 +1,213 @@
+@import "colorTokens.less";
+@import "fontTokens.less";
+@import "utilityTokens.less";
+
+
+//// Less to Sketch Mapping
+
+/*
+.Backgrounds .Brand {
+    background-color: @colors[Brand];
+}
+
+.Backgrounds .Primary {
+    background-color: @colors[Primary];
+}
+
+.Backgrounds .Secondary {
+    background-color: @colors[Secondary];
+}
+
+.Backgrounds .Dark {
+    background-color: @colors[Dark];
+}
+
+.Backgrounds .Light {
+    background-color: @colors[Primary];
+    border: 3px solid @colors[Brand];
+    border-radius: 3px;
+}
+
+.Backgrounds .Danger {
+    background-color: @colors[Danger];
+}
+
+.Backgrounds .Warning {
+    background-color: @colors[Warning];
+}
+
+.Backgrounds .Success {
+    background-color: @colors[Success];
+}
+
+.Backgrounds .Highlight {
+    background-color: @colors[Highlight];
+}
+
+*/
+
+/*
+.Backgrounds {
+    each(@colors, {
+        .@{key} {
+            background-color: @value;
+        } 
+    });
+}
+*/
+
+.Backgrounds {
+    // base color styles generation
+    each(@colors, {
+        .@{key} {
+            background-color: @value;
+        } 
+    });
+    
+    // shades generation
+    .Neutrals {
+        each(range(7), {
+            .Neutral-@{index} {
+                background-color: tint(@colors[Dark], 45% + (@index)*50%/7);
+            } 
+        });
+    }
+
+    // Stage background
+    .Stage {
+        background-color: tint(@colors[Dark], 98%);
+    }
+}
+
+    // border color styles generation
+    
+    .Outlines {
+    each(@colors, {
+        .Outline-@{key} {
+            background-color: fade(@value, 10%);
+            border-width: 3px;
+            border-style: solid;
+            border-color: @value;
+            border-radius: 3px;
+        } 
+    });
+    }
+
+    
+// Elevated backgrounds w/Shadow
+
+.Backgrounds .Elevated {
+    each(@colors, {
+    .@{key} {
+        background-color: @value;
+        box-shadow: @shadow[large];
+    } 
+    });
+    // shades generation
+    .Neutrals {
+        each(range(7), {
+            .Neutral-@{index} {
+                background-color: tint(@colors[Dark], 45% + (@index)*50%/7);
+                box-shadow: @shadow[large];
+            } 
+        });
+    }
+}
+
+
+// Texts generation: Size/Alignment/Color
+
+each(@font-size, .(@vs, @ks, @is) {
+    .@{ks}Size {
+        each(@text-align, .(@va, @ka, @ia) {
+            .@{va}Aligned {
+                each(@colors, {
+                    .@{key} {
+                        color: @value;
+                        font-family: @font-sans-serif;
+                        font-size: @vs;
+                        text-align: @va;
+                        vertical-align: middle;
+                        line-height: 1.25;
+                    }
+                });
+
+                // Contrast text colors subset generation
+                .ContrastTo {
+                    //Base colors
+                    each(@colors, {
+                        .@{key} {
+                            color: contrast(@value); // getting a color contrast to a given color
+                            font-family: @font-sans-serif;
+                            font-size: @vs;
+                            text-align: @va;
+                            vertical-align: middle;
+                            line-height: 1.25;
+                        }
+                    });   
+                    //Neutral colors 
+                    each(range(7), {
+                        .Neutral-@{index} {
+                            color: contrast(tint(@colors[Dark], 45% + (@index)*50%/7));
+                            font-family: @font-sans-serif;
+                            font-size: @vs;
+                            text-align: @va;
+                            vertical-align: middle;
+                            line-height: 1.25;
+                        } 
+                    });
+                            }
+            }
+        });
+    }
+});
+
+
+// Gradient Backgrounds
+
+.Gradients {
+    .Brand-Primary {
+        background-color: linear-gradient(45deg, @colors[Brand], @colors[Primary]);
+    }
+    .Brand-Secondary {
+        background-color: linear-gradient(45deg, @colors[Brand], @colors[Secondary]);
+    }
+    .Brand-Highlight {
+        background-color: linear-gradient(45deg, @colors[Brand], @colors[Highlight]);
+    }
+}
+
+// Shadows Backgrounds
+
+.Shadows .Primary {
+    each(@shadow, {
+        .@{key}Size {
+            background-color: @colors[Light];
+            box-shadow: @value;
+        }
+        .Inner {
+            .@{key}Size {
+                background-color: @colors[Light];
+                box-shadow: inset @value;
+            }
+        }
+    });
+    
+}
+
+
+//// Symbols styles
+
+/* 
+#Buttons {
+    #PrimarySmall .Back {
+        border-radius: @module;
+    }
+    #PrimaryMedium .Back {
+        border-radius: @module*2;
+    }
+    #PrimaryLarge .Back {
+        border-radius: @module*4;
+    }
+}
+*/
