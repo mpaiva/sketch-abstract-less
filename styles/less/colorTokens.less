@@ -1,17 +1,22 @@
-@import "themes/themeDefault.less";
+@import "themes/usk14.less";
 
 
-// Base colors
+// Base colors as "@{key}: @value" pairs used to generate styles 
+// Set the actual values in "themes/theme-[themeName].less" file
+
 
 @colors: {
-    Brand:      @brand;
-    Primary:    @primary; 
-    Secondary:  @secondary;
-    Dark:       @dark;
-    Light:      @light;
-    Danger:     @danger;
-    Warning:    @warning;
-    Success:    @success;
-    Info:       @info;
-    Highlight:  @highlight;
+
+// The key names will drive the Sketch style names    
+
+//  @{key}:     @value;  
+    primary:    @primary;
+    secondary:  @secondary;
+    success:    @success;
+    danger:     @danger;
+    warning:    @warning;
+    info:       @info;
+    light:      @light;
+    dark:       @dark;
+
 }

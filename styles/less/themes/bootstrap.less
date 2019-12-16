@@ -1,0 +1,48 @@
+
+// Default Theme Colors Variables
+
+@brand:               #FF6600;
+@primary:             #007BFF; 
+@secondary:           #6C757D;
+@dark:                #343A40;
+@light:               #F8F9FA;
+@danger:              #DC3545;
+@warning:             #FFC107;
+@success:             #28A745;
+@info:                #17A2B8;
+@highlight:           #fff79c;
+
+
+// Default Font-Family for this Theme
+@font-primary:       ~"Roboto Black";
+@font-secondary:     ~"Lobster";
+
+//
+@theme-heading:     @font-family;
+@theme-body:        @font-family;
+@theme-code:        @font-family;
+
+/*
+The following technique modifies the base font-size on the body using a percentage. 
+This adjusts things so that 1em equals 10px, instead of the default 16px. 
+To set the font-size to the equivalent of 14px, set it to 1.4em.
+*/
+
+@root-font-size:    62.5;   // Variable for root element font-size
+
+// Mixin 
+.font-size(@sizeValue) {    
+    @remValue: @sizeValue;
+    @pxValue: (@sizeValue * 10);
+    font-size: ~"@{pxValue}px"; 
+    font-size: ~"@{remValue}rem";
+  }
+
+
+// How to use font-size mixin
+/*
+    p {
+    .font-size(13);
+    }
+
+*/   

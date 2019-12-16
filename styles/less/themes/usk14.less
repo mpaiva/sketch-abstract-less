@@ -1,0 +1,58 @@
+@import "utilities/colorPalette.less";
+
+
+// Default Theme Colors Variables
+
+@primary:             @blue; 
+@secondary:           @gray-600;
+@success:             @green;
+@danger:              @red;
+@warning:             @yellow;
+@info:                @cyan;
+@light:               @gray-100;
+@dark:                @gray-800;
+
+
+// Default Font-Family for this Theme
+@font-primary:       ~"Roboto Black";
+@font-secondary:     ~"Lobster";
+@font-monospace:     ~"Roboto Mono";
+
+//
+@theme-heading:     @font-primary;
+@theme-body:        @font-secondary;
+@theme-code:        @font-family;
+
+
+/*
+The following technique modifies the base font-size on the body using a percentage. 
+Designers: Sketch's font-size unit is Pixel (px) 
+Developer: Convenient way of sizing rems similar to px.
+
+Example:
+html { font-size: 62.5%; }  // Enables 1/10 relation between px/rem
+body { font-size: 1.4rem; } // =14px 
+h1   { font-size: 2.4rem; } // =24px 
+*/
+
+
+// @root-font-size variable for root element font-size
+// Developer: Use this variable as the root element (html) font-size value
+// html { font-size: ~"@{root-font-size}%";; } = html { font-size: 62.5%; }
+@root-font-size:    62.5;   
+
+// Mixin for consistent and predictable sizing in all browsers.
+.font-size(@sizeValue) {    
+    @remValue: @sizeValue;
+    @pxValue: (@sizeValue * 10);
+    font-size: ~"@{pxValue}px"; 
+    font-size: ~"@{remValue}rem";
+  }
+
+// How to use the font-size mixin
+/*
+    p {
+    .font-size(16);
+    }
+
+*/   
