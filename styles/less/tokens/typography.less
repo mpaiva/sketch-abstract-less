@@ -1,14 +1,14 @@
-@import "themes/bootstrap.less";
+@import "../themes/@{theme}.less";
 
-// Fonts
-
-@font-serif:        @font-family;
-@font-sans-serif:   @font-family;
-@font-monospace:    @font-family;
+// Font family set in the theme file
+@theme-heading:     @font-primary;
+@theme-body:        @font-secondary;
+@theme-code:        @font-monospace;
 
 
 @font-size: {
     h1:        56px;
+
     h2:        36px;
     h3:        24px;
     h4:        16px;

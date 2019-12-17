@@ -1,6 +1,7 @@
-@import "colorTokens.less";
-@import "fontTokens.less";
-@import "utilityTokens.less";
+@theme: "bootstrap";
+@import "tokens/colors.less";
+@import "tokens/typography.less";
+@import "tokens/utilities.less";
 
 
 //// Less to Sketch Mapping
@@ -68,14 +69,14 @@
     .Neutrals {
         each(range(7), {
             .Neutral-@{index} {
-                background-color: tint(@colors[Dark], 45% + (@index)*50%/7);
+                background-color: tint(@colors[dark], 45% + (@index)*50%/7);
             } 
         });
     }
 
     // Stage background
     .Stage {
-        background-color: tint(@colors[Dark], 98%);
+        background-color: tint(@colors[dark], 98%);
     }
 }
 
@@ -93,7 +94,7 @@
     });
     }
 
-    
+/*    
 // Elevated backgrounds w/Shadow
 
 .Backgrounds .Elevated {
@@ -107,14 +108,14 @@
     .Neutrals {
         each(range(7), {
             .Neutral-@{index} {
-                background-color: tint(@colors[Dark], 45% + (@index)*50%/7);
+                background-color: tint(@colors[dark], 45% + (@index)*50%/7);
                 box-shadow: @shadow[large];
             } 
         });
     }
 }
-
-
+*/
+/*
 // Texts generation: Size/Alignment/Color
 
 each(@font-size, .(@vs, @ks, @is) {
@@ -139,7 +140,7 @@ each(@font-size, .(@vs, @ks, @is) {
                         .@{key} {
                             color: contrast(@value); // getting a color contrast to a given color
                             font-family: @font-sans-serif;
-                            font-size: @vs;
+                            font-size: @vs; // .font-size(@vs);
                             text-align: @va;
                             vertical-align: middle;
                             line-height: 1.25;
@@ -162,9 +163,9 @@ each(@font-size, .(@vs, @ks, @is) {
     }
 });
 
-
+*/
 // Gradient Backgrounds
-
+/*
 .Gradients {
     .Brand-Primary {
         background-color: linear-gradient(45deg, @colors[Brand], @colors[Primary]);
@@ -194,7 +195,7 @@ each(@font-size, .(@vs, @ks, @is) {
     });
     
 }
-
+*/
 
 //// Symbols styles
 
